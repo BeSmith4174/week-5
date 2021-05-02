@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<!--file creator : Bobby Smith
+    email:bobsmit1@uat.edu
+    for CSC102 class SP2021online3
+-->
+<!-- Casino assignment
+    title: A night in Mos Eisley
+    scene: After 3 weeks in hyperspace, the crew of the Rocinate
+    final caught some down time. While refuelling commences, the captain 
+    heads to the famous Chalmuns Catina for a game of Corellian dice.
+    The tables are in full uproar. A large Devian on a hot streak looses
+    his entire stack of creds. Security removes him by way of blasters 
+    and a seat becomes available."Lets hope I have better luck than he did!"
+    the captain boast to the service droid running the table.He rolls
+    the dice and comes up with a double. "Not a bad way to start off the night"
+    he says as he places a large stack of creds on the table....
+
+-->
+<html>
+
+<head>
+    <!--    data loader   -->
+    <script src="dataLoader-1.js"></script>
+
+    <!--files used to embed a specific file within the document -->
+    <script src="JS-W2.js"></script>
+
+    <!--specifies the URL of the linked source-->
+    <link href="CSSW2style.css" rel="stylesheet" type="text/css" />
+    <title>
+        <!--title of document should stand alon from the heading-->
+        UAT Space Program
+    </title>
+</head>
+
+
+<body>
+    <!-- needed for dom-->
+    <script>
+        var theTime = new Date();
+        var tempTime = new Date();
+        var time_interval = 5000;
+        var last_iteration = 0;
+        var running = true;
+        var index = 0;
+        var timer;
+
+        // gets data from data loader
+        var data = getData();
+
+        function updateDisplay() {
+            time = new Date();
+
+            //fill in data
+            var timeRead = data[index].time_seconds;
+            if (timeRead >= 10) {
+                document.getElementById("data").rows["seconds"].innerHTML = dataRow("Time Elapsed", data[index].time_seconds, "seconds");
+                document.getElementById("data").rows["latitude"].innerHTML = dataRow("Latitude", data[index].latitude, " ");
+                document.getElementById("data").rows["longitude"].innerHTML = dataRow("Longitude", data[index].longitude, " ");
+                document.getElementById("data").rows["gps_altitude"].innerHTML = dataRow("GPS altitude", data[index].gps_altitude, " ");
+                document.getElementById("data").rows["bmpSensor_altitude"].innerHTML = dataRow("BMP Sensor altitude", data[index].bmpSensor_altitude, " ");
+                document.getElementById("data").rows["bmpSensor_pressure"].innerHTML = dataRow("BMP Sensor pressure", data[index].bmpSensor_pressure, " ");
+                document.getElementById("data").rows["bmpSensor_temp"].innerHTML = dataRow("BMP Sensor temp", data[index].bmpSensor_temp, " ");
+                document.getElementById("data").rows["digitalSensor_temp"].innerHTML = dataRow("Digital Sensor temp", data[index].digitalSensor_temp, " ");
+                document.getElementById("data").rows["cssSensor_temp"].innerHTML = dataRow("CSS Sensor temp", data[index].cssSensor_temp, " ");
+                document.getElementById("data").rows["cssSensor_eCO2"].innerHTML = dataRow("CSS Sensor eCO2", data[index].cssSensor_eCO2, " ");
+                document.getElementById("data").rows["cssSensor_TVOC"].innerHTML = dataRow("CSS Sensor TVOC", data[index].cssSensor_TVOC, " ");
+                document.getElementById("data").rows["UV"].innerHTML = dataRow("UV", data[index].UV, " ");
+                document.getElementById("data").rows["accelX"].innerHTML = dataRow("AccelX", data[index].accelX, " ");
+                document.getElementById("data").rows["accelY"].innerHTML = dataRow("AccelY", data[index].accelY, " ");
+                document.getElementById("data").rows["accelZ"].innerHTML = dataRow("AccelZ", data[index].accelZ, " ");
+                document.getElementById("data").rows["magneticX"].innerHTML = dataRow("magneticX", data[index].magneticX, " ");
+                document.getElementById("data").rows["magneticY"].innerHTML = dataRow("magneticY", data[index].magneticY, " ");
+                document.getElementById("data").rows["magneticZ"].innerHTML = dataRow("magneticZ", data[index].magneticZ, " ");
+                document.getElementById("data").rows["gyroX"].innerHTML = dataRow("gyroX", data[index].gyroX, " ");
+                document.getElementById("data").rows["gyroY"].innerHTML = dataRow("gyroY", data[index].gyroY, " ");
+                document.getElementById("data").rows["gyroZ"].innerHTML = dataRow("gyroZ", data[index].gyroZ, " ");
+            }
+            if (index < 500) {
+                index++;
+            } else {
+                index = 0;
+            }
+
+
+        }
+
+
+    </script>
+
+    <!-- A table to set the logo and h1 on the same line-->
+    <table>
+        <!--links image used for page-->
+        <td> <img src="UATspacelogo.jpg"></td>
+        <td>
+            <h1> UAT Space Program </h1>
+        </td>
+    </table>
+    <table border="2" id="data" width="70%" class="mainTable">
+        <col style="width: 35%;">
+        <col style="width: 35%;">
+        <thead>
+            <tr style="font-family: fantasy ;">
+                <th align="left">Data Type</th>
+                <th align="left">Reading</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="seconds">
+
+            </tr>
+
+            <tr id="latitude">
+
+            </tr>
+            <tr id="longitude">
+
+            </tr>
+            <tr id="gps_altitude">
+
+            </tr>
+            <tr id="bmpSensor_altitude">
+
+            </tr>
+            <tr id="bmpSensor_pressure">
+
+            </tr>
+            <tr id="bmpSensor_temp">
+
+            </tr>
+            <tr id="digitalSensor_temp">
+
+            </tr>
+            <tr id="cssSensor_temp">
+
+            </tr>
+            <tr id="cssSensor_eCO2">
+
+            </tr>
+            <tr id="cssSensor_TVOC">
+
+            </tr>
+            <tr id="UV">
+
+            </tr>
+            <tr id="accelX">
+
+            </tr>
+            <tr id="accelY">
+
+            </tr>
+            <tr id="accelZ">
+
+            </tr>
+            <tr id="magneticX">
+
+            </tr>
+            <tr id="magneticY">
+
+            </tr>
+            <tr id="magneticZ">
+
+            </tr>
+            <tr id="gyroX">
+
+            </tr>
+            <tr id="gyroY">
+
+            </tr>
+            <tr id="gyroZ">
+
+            </tr>
+
+
+        </tbody>
+    </table>
+
+    <br>
+    <br>
+
+    <!--specifies device buttons from countdown-->
+    <button class="button" id="startButton" onclick="start();">Start</button>
+    <button id="stopButton" onclick="stop();" class="button"> Stop</button>
+
+    <br>
+    <button class="button" onclick="playStation();">Play Sound</button>
+
+    <br>
+    <br>
+
+
+
+
+    <br>
+    <!-- this sets up the craps roll identifiers for die1 and die2-->
+    <h3 id="crapsResults">Results of the Craps Round</h3>
+    <br>
+    Die1 is:<div id="die1Res">needs to be rolled</div><br>
+    Die2 is:<div id="die2Res">needs to be rolled</div><br>
+    Sum of Die1 + Die2 is: <div id="sumRes">needs to be rolled</div>
+    <!--button identifiers-->
+    <button class="lgButtons" onclick="playCraps();">Play Craps Here!</button>
+
+</body>
+
+
+
+</html>
